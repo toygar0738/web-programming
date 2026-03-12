@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+    <h1>Otel otomasyonu </h1>
+    <h2>Oda Ekle</h2>
+    <input type="text" id="odaNo">
+    <input type="text" id="odaTip">
+    <button  onclick="odaEkle()">Oda Ekle</button>
+    <h2>Müşteri Ekle</h2>
+    <input type="text" id="musteriAd" placeholder="Ad">
+    <input type="text" id="musteriTel" placeholder="Telefon">
+    <button onclick="musteriEkle()">Ekle</button>
+    <h3>Rezervasyon Yap</h3>
+    <input type="text" id="rezMusteri" placeholder="Müşteri Adı">
+    <input type="text" id="rezOda" placeholder="Oda No">
+    <input type="date" id="rezTarih">
+    <button onclick="rezervasyonEkle()">Rezervasyon Yap</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
