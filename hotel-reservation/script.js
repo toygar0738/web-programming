@@ -30,15 +30,19 @@ function odaEkle() {
 
     let no = document.getElementById("odaNo").value;
     let tip = document.getElementById("odaTip").value;
+    let liste = document.getElementById("odaListe");
+
 
     if (no === "") {
         alert("Oda numarası boş olamaz!");
         return;
     }
 
-    const oda = { no, tip }; 
+    const oda = new Oda( no, tip ); 
     odalar.push(oda);
 
+     liste.innerHTML += "<li>" + no +  " - " + tip + "</li>";
+     
     console.log(odalar);
 }
 
@@ -60,12 +64,15 @@ function musteriEkle() {
    
     for (let i = 1; i <= 2; i++) {
 
-        let musteri = {
+        let musteri = new Musteri(
             ad: parseEdilenMusteri.ad + " " + i,
             tel: parseEdilenMusteri.tel
-        };
+        );
 
         musteriler.push(musteri);
+        let liste = document.getElementById("musteriListe");
+        liste.innerHTML += "<li>" + parseEdilenMusteri.ad + " - " + parseEdilenMusteri.tel + "</li>";
+
     }
 
     console.log(musteriler);
@@ -77,12 +84,27 @@ function rezervasyonEkle() {
     let ad = document.getElementById("rezMusteri").value;
     let oda = document.getElementById("rezOda").value;
     let tarih = document.getElementById("rezTarih").value;
+    let liste = document.getElementById("rezListe");
 
-    if (ad === "" || oda === "") {
+    
+
+    if (ad === "" || oda === "" || tarih ==="") {
         alert("Bilgiler eksik!");
         return;
     }
 
+    for (let i = 0; i < rezervasyonlar.length; i++) {
+        if (rezervasyonlar[i].oda === oda) {
+            alert("Bu oda zaten rezerve edilmiş!");
+            return;
+        }
+    }
+
+    const rezervasyonBekle().then((mesaj))
+
+
+
+    liste.innerHTML += "<li>" + ad + " - Oda " + oda + " - " + tarih + "</li>";
     const rezervasyon = { ad, oda, tarih };
 
    
@@ -112,3 +134,5 @@ function rezervasyonBekle() {
 
     });
 }
+
+//hhhh

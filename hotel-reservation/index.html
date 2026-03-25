@@ -7,10 +7,10 @@
 </head>
 <body>
 
-    <h1>Otel otomasyonu sistemi programi</h1>
+    <h1>Otel otomasyonu sistemi</h1>
     <h2>Oda Ekle</h2>
-    <input type="text" id="odaNo">
-    <input type="text" id="odaTip">
+    <input type="text" id="odaNo" placeholder="Oda Numarası">
+    <input type="text" id="odaTip" placeholder="Oda Tipi">
     <button  onclick="odaEkle()">Oda Ekle</button>
     <h2>Müşteri Ekle</h2>
     <input type="text" id="musteriAd" placeholder="Ad">
@@ -18,9 +18,16 @@
     <button onclick="musteriEkle()">Ekle</button>
     <h3>Rezervasyon Yap</h3>
     <input type="text" id="rezMusteri" placeholder="Müşteri Adı">
-    <input type="text" id="rezOda" placeholder="Oda No">
+    <input type="text" id="rezOda" placeholder="Oda Numarası">
     <input type="date" id="rezTarih">
     <button onclick="rezervasyonEkle()">Rezervasyon Yap</button>
+    <h3>Odalar</h3>
+    <ul id="odaListe"></ul>
+    <h3>Müşteriler</h3>
+    <ul id="musteriListe"></ul>
+    <h3>Rezervasyonlari</h3>
+    <ul id="rezListe"></ul>
+
 
     <script src="script.js"></script>
 </body>
