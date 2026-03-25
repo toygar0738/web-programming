@@ -135,4 +135,3 @@ function rezervasyonBekle() {
     });
 }
 
-//hhhh
