@@ -1,132 +1,121 @@
-let odalar = [];
-let musteriler = [];
-let rezervasyonlar = [];
+let rooms = [];
+let customers = [];
+let reservations = [];
 
 
 
-class Oda {
-  constructor(odaNo, odaTip) {
-    this.odaNo = odaNo;
-    this.odaTip = odaTip;
+class Room {
+  constructor(roomNo, roomType) {
+    this.roomNo = roomNo;
+    this.roomType = roomType;
   }
 }
 
-class Musteri {
-  constructor(ad, tel) {
-    this.ad = ad;
-    this.tel = tel;
+class Customer {
+  constructor(name, phone) {
+    this.name = name;
+    this.phone = phone;
   }
 }
 
-class Rezervasyon {
-  constructor(ad, oda, tarih) {
-    this.ad = ad;
-    this.oda = oda;
-    this.tarih = tarih;
+class Reservation {
+  constructor(name, room, date) {
+    this.name = name;
+    this.room = room;
+    this.date = date;
   }
 }
 
-function odaEkle() {
+function addRoom() {
 
-    let no = document.getElementById("odaNo").value;
-    let tip = document.getElementById("odaTip").value;
-    let liste = document.getElementById("odaListe");
-
+    let no = document.getElementById("roomNo").value;
+    let type = document.getElementById("roomType").value;
+    let list = document.getElementById("roomList")
 
     if (no === "") {
         alert("Oda numarası boş olamaz!");
         return;
     }
 
-    const oda = new Oda( no, tip ); 
-    odalar.push(oda);
+    const room = new Room(no, type);
+    rooms.push(room);
 
-     liste.innerHTML += "<li>" + no +  " - " + tip + "</li>";
-     
-    console.log(odalar);
+    list.innerHTML += "<li>" + no + " - " + type + "</li>";
+
+    console.log(rooms);
 }
 
 
-function musteriEkle() {
+function addCustomer() {
 
-    let ad = document.getElementById("musteriAd").value;
-    let tel = document.getElementById("musteriTel").value;
+    let name = document.getElementById("customerName").value;
+    let phone = document.getElementById("customerPhone").value;
+    let list = document.getElementById("customerList");
 
-    if (ad === "") {
+    if (name === "") {
         alert("Ad boş olamaz!");
         return;
     }
 
-    
-    const musteriJSON = JSON.stringify({ ad, tel });
-    const parseEdilenMusteri = JSON.parse(musteriJSON);
+    const customerJSON = JSON.stringify({ name, phone });
+    const parseEdilenCustomer = JSON.parse(customerJSON);
 
-   
     for (let i = 1; i <= 2; i++) {
 
-        let musteri = new Musteri(
-            ad: parseEdilenMusteri.ad + " " + i,
-            tel: parseEdilenMusteri.tel
+        let customer = new Customer(
+            parseEdilenCustomer.name + " " + i,
+            parseEdilenCustomer.phone
         );
 
-        musteriler.push(musteri);
-        let liste = document.getElementById("musteriListe");
-        liste.innerHTML += "<li>" + parseEdilenMusteri.ad + " - " + parseEdilenMusteri.tel + "</li>";
+        customers.push(customer);
 
+        list.innerHTML += "<li>" + customer.name + " - " + customer.phone + "</li>";
     }
 
-    console.log(musteriler);
+    console.log(customers);
 }
 
 
-function rezervasyonEkle() {
+function addReservation() {
 
-    let ad = document.getElementById("rezMusteri").value;
-    let oda = document.getElementById("rezOda").value;
-    let tarih = document.getElementById("rezTarih").value;
-    let liste = document.getElementById("rezListe");
+    let name = document.getElementById("resCustomer").value;
+    let room = document.getElementById("resRoom").value;
+    let date = document.getElementById("resDate").value;
+    let list = document.getElementById("resList");
 
-    
-
-    if (ad === "" || oda === "" || tarih ==="") {
+    if (name === "" || room === "" || date === "") {
         alert("Bilgiler eksik!");
         return;
     }
 
-    for (let i = 0; i < rezervasyonlar.length; i++) {
-        if (rezervasyonlar[i].oda === oda) {
+    for (let i = 0; i < reservations.length; i++) {
+        if (reservations[i].room === room) {
             alert("Bu oda zaten rezerve edilmiş!");
             return;
         }
     }
 
-    const rezervasyonBekle().then((mesaj))
+    const reservation = new Reservation(name, room, date);
+
+    waitReservation().then((message) => {
+
+        reservations = [...reservations, reservation];
+
+        list.innerHTML += "<li>" + name + " - Oda " + room + " - " + date + "</li>";
 
 
+        console.log("Müşteri:", name);
+        console.log("Oda:", room);
+        console.log("Tarih:", date);
 
-    liste.innerHTML += "<li>" + ad + " - Oda " + oda + " - " + tarih + "</li>";
-    const rezervasyon = { ad, oda, tarih };
-
-   
-    rezervasyonBekle().then((mesaj) => {
-
-        rezervasyonlar = [...rezervasyonlar, rezervasyon];
-
-        
-        const { ad, oda, tarih } = rezervasyon;
-
-        console.log("Müşteri:", ad);
-        console.log("Oda:", oda);
-        console.log("Tarih:", tarih);
-
-        alert(mesaj);
+        alert(message);
     });
 }
 
 
-function rezervasyonBekle() {
+function waitReservation() {
 
-    return new Promise((resolve) => {
+    return new Promise ((resolve) => {
 
         setTimeout(() => {
             resolve("Rezervasyon oluşturuldu");
@@ -135,3 +124,4 @@ function rezervasyonBekle() {
     });
 }
 
+//asd

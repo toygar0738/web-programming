@@ -1,3 +1,9 @@
+<nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="room.html">Odalar</a>
+    <a href="customers.html">Müşteriler</a>
+</nav>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,28 +13,29 @@
 </head>
 <body>
 
-    <h1>Otel otomasyonu sistemi</h1>
+    <h1>Otel otomasyonu sistemii</h1>
     <h2>Oda Ekle</h2>
-    <input type="text" id="odaNo" placeholder="Oda Numarası">
-    <input type="text" id="odaTip" placeholder="Oda Tipi">
-    <button  onclick="odaEkle()">Oda Ekle</button>
+    <input type="text" id="roomNo" placeholder="Oda Numarası">
+    <input type="text" id="roomType" placeholder="Oda Tipi">
+    <button  onclick="addRoom()">Oda Ekle</button>
     <h2>Müşteri Ekle</h2>
-    <input type="text" id="musteriAd" placeholder="Ad">
-    <input type="text" id="musteriTel" placeholder="Telefon">
-    <button onclick="musteriEkle()">Ekle</button>
+    <input type="text" id="customerName" placeholder="Ad">
+    <input type="text" id="customerPhone" placeholder="Telefon">
+    <button onclick="addCustomer()">Ekle</button>
     <h3>Rezervasyon Yap</h3>
-    <input type="text" id="rezMusteri" placeholder="Müşteri Adı">
-    <input type="text" id="rezOda" placeholder="Oda Numarası">
-    <input type="date" id="rezTarih">
-    <button onclick="rezervasyonEkle()">Rezervasyon Yap</button>
+    <input type="text" id="resCustomer" placeholder="Müşteri Adı">
+    <input type="text" id="resRoom" placeholder="Oda Numarası">
+    <input type="date" id="resDate">
+    <button onclick="addReservation()">Rezervasyon Yap</button>
     <h3>Odalar</h3>
-    <ul id="odaListe"></ul>
+    <ul id="roomList"></ul>
     <h3>Müşteriler</h3>
-    <ul id="musteriListe"></ul>
+    <ul id="customerList"></ul>
     <h3>Rezervasyonlar</h3>
-    <ul id="rezListe"></ul>
+    <ul id="resList"></ul>
 
 
     <script src="script.js"></script>
 </body>
 </html>
+

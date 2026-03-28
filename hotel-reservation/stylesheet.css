@@ -75,3 +75,19 @@ ul li {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
+nav {
+    margin-bottom: 20px;
+}
+
+nav a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/*asd
