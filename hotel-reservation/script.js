@@ -39,6 +39,7 @@ function addRoom() {
 
     const room = new Room(no, type);
     rooms.push(room);
+    localStorage.setItem("rooms", JSON.stringify(rooms));
 
     list.innerHTML += "<li>" + no + " - " + type + "</li>";
 
@@ -69,9 +70,16 @@ function addCustomer() {
 
         customers.push(customer);
 
+
+
+
+
         list.innerHTML += "<li>" + customer.name + " - " + customer.phone + "</li>";
     }
 
+
+
+    
     console.log(customers);
 }
 
